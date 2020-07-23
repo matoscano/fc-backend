@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/matoscano/fc-backend/issues"
   },
-  "homepage": "https://github.com/matoscano/fc-backend#readme"
+  "homepage": "https://github.com/matoscano/fc-backend#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.18.3"
+  }
 }
