@@ -1,0 +1,26 @@
+{
+  "name": "fc-backend",
+  "version": "1.0.0",
+  "description": "Graphql API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matoscano/fc-backend.git"
+  },
+  "keywords": [
+    "node",
+    "graphql",
+    "prisma",
+    "api",
+    "backend"
+  ],
+  "author": "Miguel A. Toscano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matoscano/fc-backend/issues"
+  },
+  "homepage": "https://github.com/matoscano/fc-backend#readme"
+}
