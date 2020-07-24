@@ -4,6 +4,7 @@
   "description": "Graphql API",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +25,8 @@
   },
   "homepage": "https://github.com/matoscano/fc-backend#readme",
   "dependencies": {
-    "graphql-yoga": "^1.18.3"
+    "graphql": "^15.3.0",
+    "graphql-yoga": "^1.18.3",
+    "prisma-client-lib": "^1.34.10"
   }
 }

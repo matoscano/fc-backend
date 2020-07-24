@@ -1,12 +1,22 @@
+scalar DateTime
+
+type Query {
+  getAllmovies: [Movie!]!
+}
+
+type Mutation {
+  createMovie(title: String!): Movie!
+}
+
 type Movie {
-  id: ID! @id
-  createAt: DateTime! @createAt
+  id: ID!
+  createAt: DateTime!
   title: String!
 }
 
 type Shareholder {
-  id: ID! @id
-  createAt: DateTime! @createAt
+  id: ID!
+  createAt: DateTime!
   firstName: String
   lastName: String
   address: String
@@ -16,16 +26,16 @@ type Shareholder {
 }
 
 type Transfer {
-  id: ID! @id
-  createAt: DateTime! @createAt
+  id: ID!
+  createAt: DateTime!
   movie: Movie!
   amount: Float!
   description: String
 }
 
 type BalanceTransaction {
-  id: ID! @id
-  createAt: DateTime! @createAt
+  id: ID!
+  createAt: DateTime!
   transfer: Transfer!
   amount: Float!
 }

@@ -16,7 +16,12 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  balanceTransaction: (
+    where?: BalanceTransactionWhereInput
+  ) => Promise<boolean>;
+  movie: (where?: MovieWhereInput) => Promise<boolean>;
+  shareholder: (where?: ShareholderWhereInput) => Promise<boolean>;
+  transfer: (where?: TransferWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -38,47 +43,164 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserNullablePromise;
-  users: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  balanceTransaction: (
+    where: BalanceTransactionWhereUniqueInput
+  ) => BalanceTransactionNullablePromise;
+  balanceTransactions: (args?: {
+    where?: BalanceTransactionWhereInput;
+    orderBy?: BalanceTransactionOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<User>;
-  usersConnection: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  }) => FragmentableArray<BalanceTransaction>;
+  balanceTransactionsConnection: (args?: {
+    where?: BalanceTransactionWhereInput;
+    orderBy?: BalanceTransactionOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => UserConnectionPromise;
+  }) => BalanceTransactionConnectionPromise;
+  movie: (where: MovieWhereUniqueInput) => MovieNullablePromise;
+  movies: (args?: {
+    where?: MovieWhereInput;
+    orderBy?: MovieOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Movie>;
+  moviesConnection: (args?: {
+    where?: MovieWhereInput;
+    orderBy?: MovieOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => MovieConnectionPromise;
+  shareholder: (
+    where: ShareholderWhereUniqueInput
+  ) => ShareholderNullablePromise;
+  shareholders: (args?: {
+    where?: ShareholderWhereInput;
+    orderBy?: ShareholderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Shareholder>;
+  shareholdersConnection: (args?: {
+    where?: ShareholderWhereInput;
+    orderBy?: ShareholderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => ShareholderConnectionPromise;
+  transfer: (where: TransferWhereUniqueInput) => TransferNullablePromise;
+  transfers: (args?: {
+    where?: TransferWhereInput;
+    orderBy?: TransferOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Transfer>;
+  transfersConnection: (args?: {
+    where?: TransferWhereInput;
+    orderBy?: TransferOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => TransferConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (args: {
-    data: UserUpdateInput;
-    where: UserWhereUniqueInput;
-  }) => UserPromise;
-  updateManyUsers: (args: {
-    data: UserUpdateManyMutationInput;
-    where?: UserWhereInput;
+  createBalanceTransaction: (
+    data: BalanceTransactionCreateInput
+  ) => BalanceTransactionPromise;
+  updateBalanceTransaction: (args: {
+    data: BalanceTransactionUpdateInput;
+    where: BalanceTransactionWhereUniqueInput;
+  }) => BalanceTransactionPromise;
+  updateManyBalanceTransactions: (args: {
+    data: BalanceTransactionUpdateManyMutationInput;
+    where?: BalanceTransactionWhereInput;
   }) => BatchPayloadPromise;
-  upsertUser: (args: {
-    where: UserWhereUniqueInput;
-    create: UserCreateInput;
-    update: UserUpdateInput;
-  }) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  upsertBalanceTransaction: (args: {
+    where: BalanceTransactionWhereUniqueInput;
+    create: BalanceTransactionCreateInput;
+    update: BalanceTransactionUpdateInput;
+  }) => BalanceTransactionPromise;
+  deleteBalanceTransaction: (
+    where: BalanceTransactionWhereUniqueInput
+  ) => BalanceTransactionPromise;
+  deleteManyBalanceTransactions: (
+    where?: BalanceTransactionWhereInput
+  ) => BatchPayloadPromise;
+  createMovie: (data: MovieCreateInput) => MoviePromise;
+  updateMovie: (args: {
+    data: MovieUpdateInput;
+    where: MovieWhereUniqueInput;
+  }) => MoviePromise;
+  updateManyMovies: (args: {
+    data: MovieUpdateManyMutationInput;
+    where?: MovieWhereInput;
+  }) => BatchPayloadPromise;
+  upsertMovie: (args: {
+    where: MovieWhereUniqueInput;
+    create: MovieCreateInput;
+    update: MovieUpdateInput;
+  }) => MoviePromise;
+  deleteMovie: (where: MovieWhereUniqueInput) => MoviePromise;
+  deleteManyMovies: (where?: MovieWhereInput) => BatchPayloadPromise;
+  createShareholder: (data: ShareholderCreateInput) => ShareholderPromise;
+  updateShareholder: (args: {
+    data: ShareholderUpdateInput;
+    where: ShareholderWhereUniqueInput;
+  }) => ShareholderPromise;
+  updateManyShareholders: (args: {
+    data: ShareholderUpdateManyMutationInput;
+    where?: ShareholderWhereInput;
+  }) => BatchPayloadPromise;
+  upsertShareholder: (args: {
+    where: ShareholderWhereUniqueInput;
+    create: ShareholderCreateInput;
+    update: ShareholderUpdateInput;
+  }) => ShareholderPromise;
+  deleteShareholder: (where: ShareholderWhereUniqueInput) => ShareholderPromise;
+  deleteManyShareholders: (
+    where?: ShareholderWhereInput
+  ) => BatchPayloadPromise;
+  createTransfer: (data: TransferCreateInput) => TransferPromise;
+  updateTransfer: (args: {
+    data: TransferUpdateInput;
+    where: TransferWhereUniqueInput;
+  }) => TransferPromise;
+  updateManyTransfers: (args: {
+    data: TransferUpdateManyMutationInput;
+    where?: TransferWhereInput;
+  }) => BatchPayloadPromise;
+  upsertTransfer: (args: {
+    where: TransferWhereUniqueInput;
+    create: TransferCreateInput;
+    update: TransferUpdateInput;
+  }) => TransferPromise;
+  deleteTransfer: (where: TransferWhereUniqueInput) => TransferPromise;
+  deleteManyTransfers: (where?: TransferWhereInput) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -88,9 +210,18 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  balanceTransaction: (
+    where?: BalanceTransactionSubscriptionWhereInput
+  ) => BalanceTransactionSubscriptionPayloadSubscription;
+  movie: (
+    where?: MovieSubscriptionWhereInput
+  ) => MovieSubscriptionPayloadSubscription;
+  shareholder: (
+    where?: ShareholderSubscriptionWhereInput
+  ) => ShareholderSubscriptionPayloadSubscription;
+  transfer: (
+    where?: TransferSubscriptionWhereInput
+  ) => TransferSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -101,24 +232,122 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput = "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC";
+export type BalanceTransactionOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createAt_ASC"
+  | "createAt_DESC"
+  | "amount_ASC"
+  | "amount_DESC";
+
+export type MovieOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createAt_ASC"
+  | "createAt_DESC"
+  | "title_ASC"
+  | "title_DESC";
+
+export type ShareholderOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createAt_ASC"
+  | "createAt_DESC"
+  | "firstName_ASC"
+  | "firstName_DESC"
+  | "lastName_ASC"
+  | "lastName_DESC"
+  | "address_ASC"
+  | "address_DESC"
+  | "iban_ASC"
+  | "iban_DESC";
+
+export type TransferOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createAt_ASC"
+  | "createAt_DESC"
+  | "amount_ASC"
+  | "amount_DESC"
+  | "description_ASC"
+  | "description_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
+export interface MovieCreateOneInput {
+  create?: Maybe<MovieCreateInput>;
+  connect?: Maybe<MovieWhereUniqueInput>;
 }
 
-export interface UserUpdateInput {
-  name?: Maybe<String>;
+export type BalanceTransactionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface BalanceTransactionUpdateManyInput {
+  create?: Maybe<
+    BalanceTransactionCreateInput[] | BalanceTransactionCreateInput
+  >;
+  update?: Maybe<
+    | BalanceTransactionUpdateWithWhereUniqueNestedInput[]
+    | BalanceTransactionUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | BalanceTransactionUpsertWithWhereUniqueNestedInput[]
+    | BalanceTransactionUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<
+    BalanceTransactionWhereUniqueInput[] | BalanceTransactionWhereUniqueInput
+  >;
+  connect?: Maybe<
+    BalanceTransactionWhereUniqueInput[] | BalanceTransactionWhereUniqueInput
+  >;
+  set?: Maybe<
+    BalanceTransactionWhereUniqueInput[] | BalanceTransactionWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    BalanceTransactionWhereUniqueInput[] | BalanceTransactionWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    BalanceTransactionScalarWhereInput[] | BalanceTransactionScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | BalanceTransactionUpdateManyWithWhereNestedInput[]
+    | BalanceTransactionUpdateManyWithWhereNestedInput
+  >;
 }
 
-export interface UserUpdateManyMutationInput {
-  name?: Maybe<String>;
+export interface MovieUpsertNestedInput {
+  update: MovieUpdateDataInput;
+  create: MovieCreateInput;
 }
 
-export interface UserWhereInput {
+export interface ShareholderUpdateInput {
+  createAt?: Maybe<DateTimeInput>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  address?: Maybe<String>;
+  iban?: Maybe<String>;
+  movie?: Maybe<MovieUpdateOneRequiredInput>;
+  balance?: Maybe<BalanceTransactionUpdateManyInput>;
+}
+
+export interface TransferUpdateDataInput {
+  createAt?: Maybe<DateTimeInput>;
+  movie?: Maybe<MovieUpdateOneRequiredInput>;
+  amount?: Maybe<Float>;
+  description?: Maybe<String>;
+}
+
+export interface BalanceTransactionCreateManyInput {
+  create?: Maybe<
+    BalanceTransactionCreateInput[] | BalanceTransactionCreateInput
+  >;
+  connect?: Maybe<
+    BalanceTransactionWhereUniqueInput[] | BalanceTransactionWhereUniqueInput
+  >;
+}
+
+export interface MovieWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -133,180 +362,730 @@ export interface UserWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+  createAt?: Maybe<DateTimeInput>;
+  createAt_not?: Maybe<DateTimeInput>;
+  createAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_lt?: Maybe<DateTimeInput>;
+  createAt_lte?: Maybe<DateTimeInput>;
+  createAt_gt?: Maybe<DateTimeInput>;
+  createAt_gte?: Maybe<DateTimeInput>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
+  AND?: Maybe<MovieWhereInput[] | MovieWhereInput>;
+  OR?: Maybe<MovieWhereInput[] | MovieWhereInput>;
+  NOT?: Maybe<MovieWhereInput[] | MovieWhereInput>;
 }
 
-export interface UserSubscriptionWhereInput {
+export type TransferWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ShareholderSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  node?: Maybe<ShareholderWhereInput>;
+  AND?: Maybe<
+    ShareholderSubscriptionWhereInput[] | ShareholderSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    ShareholderSubscriptionWhereInput[] | ShareholderSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    ShareholderSubscriptionWhereInput[] | ShareholderSubscriptionWhereInput
+  >;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
+export interface ShareholderCreateInput {
+  id?: Maybe<ID_Input>;
+  createAt: DateTimeInput;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  address?: Maybe<String>;
+  iban?: Maybe<String>;
+  movie: MovieCreateOneInput;
+  balance?: Maybe<BalanceTransactionCreateManyInput>;
+}
+
+export interface BalanceTransactionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<BalanceTransactionWhereInput>;
+  AND?: Maybe<
+    | BalanceTransactionSubscriptionWhereInput[]
+    | BalanceTransactionSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | BalanceTransactionSubscriptionWhereInput[]
+    | BalanceTransactionSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | BalanceTransactionSubscriptionWhereInput[]
+    | BalanceTransactionSubscriptionWhereInput
+  >;
+}
+
+export interface MovieUpdateManyMutationInput {
+  createAt?: Maybe<DateTimeInput>;
+  title?: Maybe<String>;
+}
+
+export interface TransferUpdateInput {
+  createAt?: Maybe<DateTimeInput>;
+  movie?: Maybe<MovieUpdateOneRequiredInput>;
+  amount?: Maybe<Float>;
+  description?: Maybe<String>;
+}
+
+export interface MovieUpdateInput {
+  createAt?: Maybe<DateTimeInput>;
+  title?: Maybe<String>;
+}
+
+export type MovieWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
+
+export interface BalanceTransactionUpdateManyMutationInput {
+  createAt?: Maybe<DateTimeInput>;
+  amount?: Maybe<Float>;
+}
+
+export interface BalanceTransactionUpdateManyWithWhereNestedInput {
+  where: BalanceTransactionScalarWhereInput;
+  data: BalanceTransactionUpdateManyDataInput;
+}
+
+export interface BalanceTransactionUpsertWithWhereUniqueNestedInput {
+  where: BalanceTransactionWhereUniqueInput;
+  update: BalanceTransactionUpdateDataInput;
+  create: BalanceTransactionCreateInput;
+}
+
+export interface BalanceTransactionUpdateDataInput {
+  createAt?: Maybe<DateTimeInput>;
+  transfer?: Maybe<TransferUpdateOneRequiredInput>;
+  amount?: Maybe<Float>;
+}
+
+export interface BalanceTransactionCreateInput {
+  id?: Maybe<ID_Input>;
+  createAt: DateTimeInput;
+  transfer: TransferCreateOneInput;
+  amount: Float;
+}
+
+export interface BalanceTransactionUpdateWithWhereUniqueNestedInput {
+  where: BalanceTransactionWhereUniqueInput;
+  data: BalanceTransactionUpdateDataInput;
+}
+
+export interface TransferCreateOneInput {
+  create?: Maybe<TransferCreateInput>;
+  connect?: Maybe<TransferWhereUniqueInput>;
+}
+
+export interface TransferSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TransferWhereInput>;
+  AND?: Maybe<
+    TransferSubscriptionWhereInput[] | TransferSubscriptionWhereInput
+  >;
+  OR?: Maybe<TransferSubscriptionWhereInput[] | TransferSubscriptionWhereInput>;
+  NOT?: Maybe<
+    TransferSubscriptionWhereInput[] | TransferSubscriptionWhereInput
+  >;
+}
+
+export interface TransferCreateInput {
+  id?: Maybe<ID_Input>;
+  createAt: DateTimeInput;
+  movie: MovieCreateOneInput;
+  amount: Float;
+  description?: Maybe<String>;
+}
+
+export interface TransferUpdateManyMutationInput {
+  createAt?: Maybe<DateTimeInput>;
+  amount?: Maybe<Float>;
+  description?: Maybe<String>;
+}
+
+export interface TransferUpsertNestedInput {
+  update: TransferUpdateDataInput;
+  create: TransferCreateInput;
+}
+
+export interface BalanceTransactionUpdateManyDataInput {
+  createAt?: Maybe<DateTimeInput>;
+  amount?: Maybe<Float>;
+}
+
+export interface MovieCreateInput {
+  id?: Maybe<ID_Input>;
+  createAt: DateTimeInput;
+  title: String;
+}
+
+export type ShareholderWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface BalanceTransactionUpdateInput {
+  createAt?: Maybe<DateTimeInput>;
+  transfer?: Maybe<TransferUpdateOneRequiredInput>;
+  amount?: Maybe<Float>;
+}
+
+export interface TransferWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createAt?: Maybe<DateTimeInput>;
+  createAt_not?: Maybe<DateTimeInput>;
+  createAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_lt?: Maybe<DateTimeInput>;
+  createAt_lte?: Maybe<DateTimeInput>;
+  createAt_gt?: Maybe<DateTimeInput>;
+  createAt_gte?: Maybe<DateTimeInput>;
+  movie?: Maybe<MovieWhereInput>;
+  amount?: Maybe<Float>;
+  amount_not?: Maybe<Float>;
+  amount_in?: Maybe<Float[] | Float>;
+  amount_not_in?: Maybe<Float[] | Float>;
+  amount_lt?: Maybe<Float>;
+  amount_lte?: Maybe<Float>;
+  amount_gt?: Maybe<Float>;
+  amount_gte?: Maybe<Float>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<TransferWhereInput[] | TransferWhereInput>;
+  OR?: Maybe<TransferWhereInput[] | TransferWhereInput>;
+  NOT?: Maybe<TransferWhereInput[] | TransferWhereInput>;
+}
+
+export interface MovieUpdateDataInput {
+  createAt?: Maybe<DateTimeInput>;
+  title?: Maybe<String>;
+}
+
+export interface MovieUpdateOneRequiredInput {
+  create?: Maybe<MovieCreateInput>;
+  update?: Maybe<MovieUpdateDataInput>;
+  upsert?: Maybe<MovieUpsertNestedInput>;
+  connect?: Maybe<MovieWhereUniqueInput>;
+}
+
+export interface BalanceTransactionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createAt?: Maybe<DateTimeInput>;
+  createAt_not?: Maybe<DateTimeInput>;
+  createAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_lt?: Maybe<DateTimeInput>;
+  createAt_lte?: Maybe<DateTimeInput>;
+  createAt_gt?: Maybe<DateTimeInput>;
+  createAt_gte?: Maybe<DateTimeInput>;
+  transfer?: Maybe<TransferWhereInput>;
+  amount?: Maybe<Float>;
+  amount_not?: Maybe<Float>;
+  amount_in?: Maybe<Float[] | Float>;
+  amount_not_in?: Maybe<Float[] | Float>;
+  amount_lt?: Maybe<Float>;
+  amount_lte?: Maybe<Float>;
+  amount_gt?: Maybe<Float>;
+  amount_gte?: Maybe<Float>;
+  AND?: Maybe<BalanceTransactionWhereInput[] | BalanceTransactionWhereInput>;
+  OR?: Maybe<BalanceTransactionWhereInput[] | BalanceTransactionWhereInput>;
+  NOT?: Maybe<BalanceTransactionWhereInput[] | BalanceTransactionWhereInput>;
+}
+
+export interface TransferUpdateOneRequiredInput {
+  create?: Maybe<TransferCreateInput>;
+  update?: Maybe<TransferUpdateDataInput>;
+  upsert?: Maybe<TransferUpsertNestedInput>;
+  connect?: Maybe<TransferWhereUniqueInput>;
+}
+
+export interface MovieSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<MovieWhereInput>;
+  AND?: Maybe<MovieSubscriptionWhereInput[] | MovieSubscriptionWhereInput>;
+  OR?: Maybe<MovieSubscriptionWhereInput[] | MovieSubscriptionWhereInput>;
+  NOT?: Maybe<MovieSubscriptionWhereInput[] | MovieSubscriptionWhereInput>;
+}
+
+export interface ShareholderWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createAt?: Maybe<DateTimeInput>;
+  createAt_not?: Maybe<DateTimeInput>;
+  createAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_lt?: Maybe<DateTimeInput>;
+  createAt_lte?: Maybe<DateTimeInput>;
+  createAt_gt?: Maybe<DateTimeInput>;
+  createAt_gte?: Maybe<DateTimeInput>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  address?: Maybe<String>;
+  address_not?: Maybe<String>;
+  address_in?: Maybe<String[] | String>;
+  address_not_in?: Maybe<String[] | String>;
+  address_lt?: Maybe<String>;
+  address_lte?: Maybe<String>;
+  address_gt?: Maybe<String>;
+  address_gte?: Maybe<String>;
+  address_contains?: Maybe<String>;
+  address_not_contains?: Maybe<String>;
+  address_starts_with?: Maybe<String>;
+  address_not_starts_with?: Maybe<String>;
+  address_ends_with?: Maybe<String>;
+  address_not_ends_with?: Maybe<String>;
+  iban?: Maybe<String>;
+  iban_not?: Maybe<String>;
+  iban_in?: Maybe<String[] | String>;
+  iban_not_in?: Maybe<String[] | String>;
+  iban_lt?: Maybe<String>;
+  iban_lte?: Maybe<String>;
+  iban_gt?: Maybe<String>;
+  iban_gte?: Maybe<String>;
+  iban_contains?: Maybe<String>;
+  iban_not_contains?: Maybe<String>;
+  iban_starts_with?: Maybe<String>;
+  iban_not_starts_with?: Maybe<String>;
+  iban_ends_with?: Maybe<String>;
+  iban_not_ends_with?: Maybe<String>;
+  movie?: Maybe<MovieWhereInput>;
+  balance_every?: Maybe<BalanceTransactionWhereInput>;
+  balance_some?: Maybe<BalanceTransactionWhereInput>;
+  balance_none?: Maybe<BalanceTransactionWhereInput>;
+  AND?: Maybe<ShareholderWhereInput[] | ShareholderWhereInput>;
+  OR?: Maybe<ShareholderWhereInput[] | ShareholderWhereInput>;
+  NOT?: Maybe<ShareholderWhereInput[] | ShareholderWhereInput>;
+}
+
+export interface BalanceTransactionScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createAt?: Maybe<DateTimeInput>;
+  createAt_not?: Maybe<DateTimeInput>;
+  createAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createAt_lt?: Maybe<DateTimeInput>;
+  createAt_lte?: Maybe<DateTimeInput>;
+  createAt_gt?: Maybe<DateTimeInput>;
+  createAt_gte?: Maybe<DateTimeInput>;
+  amount?: Maybe<Float>;
+  amount_not?: Maybe<Float>;
+  amount_in?: Maybe<Float[] | Float>;
+  amount_not_in?: Maybe<Float[] | Float>;
+  amount_lt?: Maybe<Float>;
+  amount_lte?: Maybe<Float>;
+  amount_gt?: Maybe<Float>;
+  amount_gte?: Maybe<Float>;
+  AND?: Maybe<
+    BalanceTransactionScalarWhereInput[] | BalanceTransactionScalarWhereInput
+  >;
+  OR?: Maybe<
+    BalanceTransactionScalarWhereInput[] | BalanceTransactionScalarWhereInput
+  >;
+  NOT?: Maybe<
+    BalanceTransactionScalarWhereInput[] | BalanceTransactionScalarWhereInput
+  >;
+}
+
+export interface ShareholderUpdateManyMutationInput {
+  createAt?: Maybe<DateTimeInput>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  address?: Maybe<String>;
+  iban?: Maybe<String>;
+}
 
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface AggregateUser {
+export interface TransferPreviousValues {
+  id: ID_Output;
+  createAt: DateTimeOutput;
+  amount: Float;
+  description?: String;
+}
+
+export interface TransferPreviousValuesPromise
+  extends Promise<TransferPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  amount: () => Promise<Float>;
+  description: () => Promise<String>;
+}
+
+export interface TransferPreviousValuesSubscription
+  extends Promise<AsyncIterator<TransferPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  amount: () => Promise<AsyncIterator<Float>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface MovieEdge {
+  node: Movie;
+  cursor: String;
+}
+
+export interface MovieEdgePromise extends Promise<MovieEdge>, Fragmentable {
+  node: <T = MoviePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface MovieEdgeSubscription
+  extends Promise<AsyncIterator<MovieEdge>>,
+    Fragmentable {
+  node: <T = MovieSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface MoviePreviousValues {
+  id: ID_Output;
+  createAt: DateTimeOutput;
+  title: String;
+}
+
+export interface MoviePreviousValuesPromise
+  extends Promise<MoviePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  title: () => Promise<String>;
+}
+
+export interface MoviePreviousValuesSubscription
+  extends Promise<AsyncIterator<MoviePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  title: () => Promise<AsyncIterator<String>>;
+}
+
+export interface MovieConnection {
+  pageInfo: PageInfo;
+  edges: MovieEdge[];
+}
+
+export interface MovieConnectionPromise
+  extends Promise<MovieConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<MovieEdge>>() => T;
+  aggregate: <T = AggregateMoviePromise>() => T;
+}
+
+export interface MovieConnectionSubscription
+  extends Promise<AsyncIterator<MovieConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<MovieEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateMovieSubscription>() => T;
+}
+
+export interface AggregateBalanceTransaction {
   count: Int;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface AggregateBalanceTransactionPromise
+  extends Promise<AggregateBalanceTransaction>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
+export interface AggregateBalanceTransactionSubscription
+  extends Promise<AsyncIterator<AggregateBalanceTransaction>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface UserPreviousValues {
+export interface Movie {
   id: ID_Output;
-  name: String;
+  createAt: DateTimeOutput;
+  title: String;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
+export interface MoviePromise extends Promise<Movie>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  createAt: () => Promise<DateTimeOutput>;
+  title: () => Promise<String>;
 }
 
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
+export interface MovieSubscription
+  extends Promise<AsyncIterator<Movie>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  title: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserEdge {
-  node: User;
+export interface MovieNullablePromise
+  extends Promise<Movie | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  title: () => Promise<String>;
+}
+
+export interface TransferSubscriptionPayload {
+  mutation: MutationType;
+  node: Transfer;
+  updatedFields: String[];
+  previousValues: TransferPreviousValues;
+}
+
+export interface TransferSubscriptionPayloadPromise
+  extends Promise<TransferSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TransferPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TransferPreviousValuesPromise>() => T;
+}
+
+export interface TransferSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TransferSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TransferSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TransferPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateTransfer {
+  count: Int;
+}
+
+export interface AggregateTransferPromise
+  extends Promise<AggregateTransfer>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTransferSubscription
+  extends Promise<AsyncIterator<AggregateTransfer>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TransferConnection {
+  pageInfo: PageInfo;
+  edges: TransferEdge[];
+}
+
+export interface TransferConnectionPromise
+  extends Promise<TransferConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TransferEdge>>() => T;
+  aggregate: <T = AggregateTransferPromise>() => T;
+}
+
+export interface TransferConnectionSubscription
+  extends Promise<AsyncIterator<TransferConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TransferEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTransferSubscription>() => T;
+}
+
+export interface BalanceTransactionEdge {
+  node: BalanceTransaction;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface BalanceTransactionEdgePromise
+  extends Promise<BalanceTransactionEdge>,
+    Fragmentable {
+  node: <T = BalanceTransactionPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface BalanceTransactionEdgeSubscription
+  extends Promise<AsyncIterator<BalanceTransactionEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = BalanceTransactionSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
+export interface AggregateShareholder {
+  count: Int;
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface AggregateShareholderPromise
+  extends Promise<AggregateShareholder>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateShareholderSubscription
+  extends Promise<AsyncIterator<AggregateShareholder>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ShareholderSubscriptionPayload {
+  mutation: MutationType;
+  node: Shareholder;
+  updatedFields: String[];
+  previousValues: ShareholderPreviousValues;
+}
+
+export interface ShareholderSubscriptionPayloadPromise
+  extends Promise<ShareholderSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
+  node: <T = ShareholderPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  previousValues: <T = ShareholderPreviousValuesPromise>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface ShareholderSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ShareholderSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
+  node: <T = ShareholderSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  previousValues: <T = ShareholderPreviousValuesSubscription>() => T;
 }
 
-export interface User {
-  id: ID_Output;
-  name: String;
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserNullablePromise
-  extends Promise<User | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-}
-
-export interface UserConnection {
+export interface ShareholderConnection {
   pageInfo: PageInfo;
-  edges: UserEdge[];
+  edges: ShareholderEdge[];
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface ShareholderConnectionPromise
+  extends Promise<ShareholderConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  edges: <T = FragmentableArray<ShareholderEdge>>() => T;
+  aggregate: <T = AggregateShareholderPromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface ShareholderConnectionSubscription
+  extends Promise<AsyncIterator<ShareholderConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ShareholderEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateShareholderSubscription>() => T;
 }
 
 export interface PageInfo {
@@ -332,12 +1111,344 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
-/*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
+export interface Shareholder {
+  id: ID_Output;
+  createAt: DateTimeOutput;
+  firstName?: String;
+  lastName?: String;
+  address?: String;
+  iban?: String;
+}
 
-export type Long = string;
+export interface ShareholderPromise extends Promise<Shareholder>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  address: () => Promise<String>;
+  iban: () => Promise<String>;
+  movie: <T = MoviePromise>() => T;
+  balance: <T = FragmentableArray<BalanceTransaction>>(args?: {
+    where?: BalanceTransactionWhereInput;
+    orderBy?: BalanceTransactionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ShareholderSubscription
+  extends Promise<AsyncIterator<Shareholder>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
+  iban: () => Promise<AsyncIterator<String>>;
+  movie: <T = MovieSubscription>() => T;
+  balance: <T = Promise<AsyncIterator<BalanceTransactionSubscription>>>(args?: {
+    where?: BalanceTransactionWhereInput;
+    orderBy?: BalanceTransactionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ShareholderNullablePromise
+  extends Promise<Shareholder | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  address: () => Promise<String>;
+  iban: () => Promise<String>;
+  movie: <T = MoviePromise>() => T;
+  balance: <T = FragmentableArray<BalanceTransaction>>(args?: {
+    where?: BalanceTransactionWhereInput;
+    orderBy?: BalanceTransactionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface BalanceTransaction {
+  id: ID_Output;
+  createAt: DateTimeOutput;
+  amount: Float;
+}
+
+export interface BalanceTransactionPromise
+  extends Promise<BalanceTransaction>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  transfer: <T = TransferPromise>() => T;
+  amount: () => Promise<Float>;
+}
+
+export interface BalanceTransactionSubscription
+  extends Promise<AsyncIterator<BalanceTransaction>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  transfer: <T = TransferSubscription>() => T;
+  amount: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface BalanceTransactionNullablePromise
+  extends Promise<BalanceTransaction | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  transfer: <T = TransferPromise>() => T;
+  amount: () => Promise<Float>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface ShareholderPreviousValues {
+  id: ID_Output;
+  createAt: DateTimeOutput;
+  firstName?: String;
+  lastName?: String;
+  address?: String;
+  iban?: String;
+}
+
+export interface ShareholderPreviousValuesPromise
+  extends Promise<ShareholderPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  address: () => Promise<String>;
+  iban: () => Promise<String>;
+}
+
+export interface ShareholderPreviousValuesSubscription
+  extends Promise<AsyncIterator<ShareholderPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
+  iban: () => Promise<AsyncIterator<String>>;
+}
+
+export interface MovieSubscriptionPayload {
+  mutation: MutationType;
+  node: Movie;
+  updatedFields: String[];
+  previousValues: MoviePreviousValues;
+}
+
+export interface MovieSubscriptionPayloadPromise
+  extends Promise<MovieSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = MoviePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = MoviePreviousValuesPromise>() => T;
+}
+
+export interface MovieSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<MovieSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = MovieSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = MoviePreviousValuesSubscription>() => T;
+}
+
+export interface BalanceTransactionConnection {
+  pageInfo: PageInfo;
+  edges: BalanceTransactionEdge[];
+}
+
+export interface BalanceTransactionConnectionPromise
+  extends Promise<BalanceTransactionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<BalanceTransactionEdge>>() => T;
+  aggregate: <T = AggregateBalanceTransactionPromise>() => T;
+}
+
+export interface BalanceTransactionConnectionSubscription
+  extends Promise<AsyncIterator<BalanceTransactionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<BalanceTransactionEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateBalanceTransactionSubscription>() => T;
+}
+
+export interface BalanceTransactionPreviousValues {
+  id: ID_Output;
+  createAt: DateTimeOutput;
+  amount: Float;
+}
+
+export interface BalanceTransactionPreviousValuesPromise
+  extends Promise<BalanceTransactionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  amount: () => Promise<Float>;
+}
+
+export interface BalanceTransactionPreviousValuesSubscription
+  extends Promise<AsyncIterator<BalanceTransactionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  amount: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface BalanceTransactionSubscriptionPayload {
+  mutation: MutationType;
+  node: BalanceTransaction;
+  updatedFields: String[];
+  previousValues: BalanceTransactionPreviousValues;
+}
+
+export interface BalanceTransactionSubscriptionPayloadPromise
+  extends Promise<BalanceTransactionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = BalanceTransactionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = BalanceTransactionPreviousValuesPromise>() => T;
+}
+
+export interface BalanceTransactionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<BalanceTransactionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = BalanceTransactionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = BalanceTransactionPreviousValuesSubscription>() => T;
+}
+
+export interface ShareholderEdge {
+  node: Shareholder;
+  cursor: String;
+}
+
+export interface ShareholderEdgePromise
+  extends Promise<ShareholderEdge>,
+    Fragmentable {
+  node: <T = ShareholderPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ShareholderEdgeSubscription
+  extends Promise<AsyncIterator<ShareholderEdge>>,
+    Fragmentable {
+  node: <T = ShareholderSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TransferEdge {
+  node: Transfer;
+  cursor: String;
+}
+
+export interface TransferEdgePromise
+  extends Promise<TransferEdge>,
+    Fragmentable {
+  node: <T = TransferPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TransferEdgeSubscription
+  extends Promise<AsyncIterator<TransferEdge>>,
+    Fragmentable {
+  node: <T = TransferSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateMovie {
+  count: Int;
+}
+
+export interface AggregateMoviePromise
+  extends Promise<AggregateMovie>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateMovieSubscription
+  extends Promise<AsyncIterator<AggregateMovie>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Transfer {
+  id: ID_Output;
+  createAt: DateTimeOutput;
+  amount: Float;
+  description?: String;
+}
+
+export interface TransferPromise extends Promise<Transfer>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  movie: <T = MoviePromise>() => T;
+  amount: () => Promise<Float>;
+  description: () => Promise<String>;
+}
+
+export interface TransferSubscription
+  extends Promise<AsyncIterator<Transfer>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  movie: <T = MovieSubscription>() => T;
+  amount: () => Promise<AsyncIterator<Float>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TransferNullablePromise
+  extends Promise<Transfer | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createAt: () => Promise<DateTimeOutput>;
+  movie: <T = MoviePromise>() => T;
+  amount: () => Promise<Float>;
+  description: () => Promise<String>;
+}
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -345,15 +1456,32 @@ The `ID` scalar type represents a unique identifier, often used to refetch an ob
 export type ID_Input = string | number;
 export type ID_Output = string;
 
+export type Long = string;
+
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type Int = number;
+export type String = string;
+
+/*
+DateTime scalar input type, allowing Date
+*/
+export type DateTimeInput = Date | string;
+
+/*
+DateTime scalar output type, which is always a string
+*/
+export type DateTimeOutput = string;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
 
 /**
  * Model Metadata
@@ -361,7 +1489,19 @@ export type Boolean = boolean;
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: "Movie",
+    embedded: false
+  },
+  {
+    name: "Shareholder",
+    embedded: false
+  },
+  {
+    name: "Transfer",
+    embedded: false
+  },
+  {
+    name: "BalanceTransaction",
     embedded: false
   }
 ];
