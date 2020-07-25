@@ -1,2 +1,0 @@
-# fc-backend
-Graphql API
