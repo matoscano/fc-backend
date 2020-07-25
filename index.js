@@ -1,5 +1,7 @@
 const { GraphQLServer } = require("graphql-yoga");
-const { prisma } = require("./prisma/generated/prisma-client");
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
 
 let movies = [
   {
@@ -20,33 +22,19 @@ let movies = [
   },
 ];
 
-// const typeDefs = `
-//   type Movie {
-//     id: ID!
-//     title: String!
-//   }
-
-//   type Query{
-//     getAllmovies : [Movie!]!
-//   }
-
-//   type Mutation{
-//     addMovie(title:String!):Movie!
-//   }
-// `;
-
 const resolvers = {
   Query: {
-    getAllmovies: (parent, args, context) => {
-      console.log("parent", parent);
-      console.log("args", args);
+    getAllmovies: async (parent, args, context) => {
       console.log("args", context);
-      return movies;
+      return await context.prisma.movie.findMany();
     },
   },
   Mutation: {
-    createMovie: (parent, args, context) => {
-      return movies[0];
+    createMovie: async (parent, args, context) => {
+      console.log("create movie", args);
+      return await context.prisma.movie.create({
+        data: { title: args.title },
+      });
     },
   },
 };

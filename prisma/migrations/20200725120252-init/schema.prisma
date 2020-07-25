@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+model BalanceTransaction {
+  id          String        @default(cuid()) @id
+  createAt    DateTime      @default(now())
+  amount      Float
+  transfer    String?
+  Transfer    Transfer?     @relation(fields: [transfer], references: [id])
+  Shareholder Shareholder[] @relation(references: [id])
+}
+
+model Movie {
+  id          String        @default(cuid()) @id
+  createAt    DateTime      @default(now())
+  title       String
+  Shareholder Shareholder[]
+  Transfer    Transfer[]
+}
+
+model Shareholder {
+  id                 String               @default(cuid()) @id
+  createAt           DateTime             @default(now())
+  firstName          String?
+  lastName           String?
+  address            String?
+  iban               String?
+  movie              String?
+  Movie              Movie?               @relation(fields: [movie], references: [id])
+  BalanceTransaction BalanceTransaction[] @relation(references: [id])
+}
+
+model Transfer {
+  id                 String               @default(cuid()) @id
+  createAt           DateTime             @default(now())
+  amount             Float
+  description        String?
+  movie              String?
+  Movie              Movie?               @relation(fields: [movie], references: [id])
+  BalanceTransaction BalanceTransaction[]
+}
