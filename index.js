@@ -5,6 +5,11 @@ const prisma = new PrismaClient();
 
 const resolvers = {
   Query: {
+    deleteAll: async (parent, args, context) => {
+      return await prisma.movie.deleteMany({
+        where: { title: "Testing parent" },
+      });
+    },
     getAllMovies: async (parent, args, context) => {
       return await context.prisma.movie.findMany();
     },
@@ -19,6 +24,14 @@ const resolvers = {
     getAllTransferByMovie: async (parent, args, context) => {
       return await context.prisma.transfer.findMany({
         where: { Movie: { id: args.movieId } },
+      });
+    },
+    getAllShareholdersByMovie: async (parent, args, context) => {
+      return await context.prisma.shareholder.findMany({
+        where: { Movie: { id: args.movieId } },
+        include: {
+          BalanceTransaction: true,
+        },
       });
     },
   },

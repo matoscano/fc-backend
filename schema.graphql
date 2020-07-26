@@ -4,6 +4,8 @@ type Query {
   getAllMovies: [Movie!]!
   getAllShareholders: [Shareholder!]!
   getAllTransferByMovie(movieId: ID!): [Transfer!]!
+  getAllShareholdersByMovie(movieId: ID!): [Shareholder!]!
+  deleteAll: String
 }
 
 type Mutation {
