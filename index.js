@@ -5,6 +5,21 @@ const prisma = new PrismaClient();
 
 const resolvers = {
   Query: {
+    getShareholderById: async (parent, args, context) => {
+      return await context.prisma.shareholder.findOne({
+        where: {
+          id: args.shareholderId,
+        },
+        include: {
+          Movie: true,
+          BalanceTransaction: {
+            include: {
+              Transfer: true,
+            },
+          },
+        },
+      });
+    },
     deleteAll: async (parent, args, context) => {
       return await prisma.movie.deleteMany({
         where: { title: "Testing parent" },

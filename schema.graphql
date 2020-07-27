@@ -5,6 +5,7 @@ type Query {
   getAllShareholders: [Shareholder!]!
   getAllTransferByMovie(movieId: ID!): [Transfer!]!
   getAllShareholdersByMovie(movieId: ID!): [Shareholder!]!
+  getShareholderById(shareholderId: ID!): Shareholder!
   deleteAll: String
 }
 
@@ -48,6 +49,6 @@ type Transfer {
 type BalanceTransaction {
   id: ID!
   createAt: DateTime!
-  transfer: Transfer!
+  Transfer: Transfer!
   amount: Float!
 }
