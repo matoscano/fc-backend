@@ -20,11 +20,6 @@ const resolvers = {
         },
       });
     },
-    deleteAll: async (parent, args, context) => {
-      return await prisma.movie.deleteMany({
-        where: { title: "Testing parent" },
-      });
-    },
     getAllMovies: async (parent, args, context) => {
       return await context.prisma.movie.findMany();
     },
