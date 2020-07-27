@@ -10,7 +10,7 @@ type Query {
 }
 
 type Mutation {
-  createMovie(title: String!): Movie!
+  createMovie(title: String!, cover: String!): Movie!
   createShareholder(
     firstName: String
     lastName: String
@@ -25,6 +25,7 @@ type Movie {
   id: ID!
   createAt: DateTime!
   title: String!
+  cover: String
 }
 
 type Shareholder {

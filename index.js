@@ -53,7 +53,7 @@ const resolvers = {
   Mutation: {
     createMovie: async (parent, args, context) => {
       return await context.prisma.movie.create({
-        data: { title: args.title },
+        data: { title: args.title, cover: args.cover },
       });
     },
     createShareholder: async (parent, args, context) => {
