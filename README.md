@@ -1,6 +1,6 @@
-## FilmChain movies app
+## Movies app
 
-This repository (fc-backend) contains a graphql api corresponding with the backend for FilmChain movies app.
+This repository (fc-backend) contains a graphql api corresponding with the backend for movies app.
 
 This app was created using node js (https://nodejs.org/es/) and graphql yoga(https://github.com/prisma-labs/graphql-yoga).
 
